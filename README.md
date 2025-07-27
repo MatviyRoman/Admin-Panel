@@ -77,7 +77,7 @@ Follow these steps to set up and run the application locally.
 1. **Clone the repository:**
 
    ```bash
-   git clone <repository-url>
+   git clone https://github.com/MatviyRoman/Admin-Panel.git
    cd Admin-Panel
    ```
 
