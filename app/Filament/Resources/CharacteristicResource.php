@@ -7,7 +7,6 @@ use App\Filament\Resources\CharacteristicResource\RelationManagers;
 use App\Models\Characteristic;
 use App\Models\CharacteristicCategory;
 use Filament\Forms;
-use Filament\Forms\Components\KeyValue;
 use Filament\Forms\Components\Select;
 use Filament\Forms\Components\TextInput;
 use Filament\Forms\Form;
@@ -37,11 +36,54 @@ class CharacteristicResource extends Resource
                 TextInput::make('name')
                     ->required()
                     ->maxLength(255),
-                KeyValue::make('meta_data')
-                    ->default([
-                        'description' => '',
-                        'type' => '',
+
+                Forms\Components\Fieldset::make('Meta Data')
+                    ->schema([
+                        Select::make('meta_data.type')
+                            ->label('Type')
+                            ->options([
+                                'boolean' => 'Boolean',
+                                'integer' => 'Integer',
+                                'string' => 'String',
+                            ])
+                            ->required()
+                            ->default('string')
+                            ->live()
+                            ->afterStateUpdated(function (Forms\Set $set) {
+                                $set('meta_data.description', null); // Clear description when type changes
+                            }),
+
+                        Forms\Components\TextInput::make('meta_data.description')
+                            ->label(fn (Forms\Get $get) => match ($get('meta_data.type')) {
+                                'boolean' => 'Boolean Value',
+                                'integer' => 'Integer Value',
+                                'string' => 'String Value',
+                                default => 'Value',
+                            })
+                            ->placeholder(fn (Forms\Get $get) => match ($get('meta_data.type')) {
+                                'boolean' => 'Select true or false',
+                                'integer' => 'Enter an integer (e.g., 123)',
+                                'string' => 'Enter a string (e.g., text value)',
+                                default => 'Enter a value',
+                            })
+                            ->rules(fn (Forms\Get $get) => match ($get('meta_data.type')) {
+                                'boolean' => ['required', 'in:true,false'],
+                                'integer' => ['required', 'integer'],
+                                'string' => ['required', 'string'],
+                                default => ['required'],
+                            })
+                            ->visible(fn (Forms\Get $get) => $get('meta_data.type') !== 'boolean'),
+
+                        Forms\Components\Select::make('meta_data.description')
+                            ->label('Boolean Value')
+                            ->options([
+                                'true' => 'True',
+                                'false' => 'False',
+                            ])
+                            ->required()
+                            ->visible(fn (Forms\Get $get) => $get('meta_data.type') === 'boolean'),
                     ])
+                    ->columns(1)
                     ->columnSpan('full'),
             ]);
     }
