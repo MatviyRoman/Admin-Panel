@@ -48,9 +48,13 @@
 
         <div class="mt-8 bg-gray-50 dark:bg-gray-700 p-6 rounded-lg shadow-md transition duration-300 hover:scale-105">
             <h2 class="text-2xl font-semibold mb-3 text-gray-800 dark:text-gray-100">My CV</h2>
-            <p class="text-gray-600 dark:text-gray-300">
+            <p class="text-gray-600 dark:text-gray-300 mb-2">
                 You can view my curriculum vitae here:
                 <a href="https://roman.matviy.pp.ua" class="text-blue-500 hover:underline font-medium" target="_blank">roman.matviy.pp.ua</a>
+            </p>
+            <p class="text-gray-600 dark:text-gray-300 mt-2">
+                Looking for a developer?
+                <a href="https://roman.matviy.pp.ua" class="text-green-500 hover:underline font-bold" target="_blank">Hire Web Developer</a>
             </p>
         </div>
 
