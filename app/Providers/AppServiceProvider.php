@@ -3,6 +3,10 @@
 namespace App\Providers;
 
 use Illuminate\Support\ServiceProvider;
+use App\Services\CharacteristicService;
+use App\Services\Contracts\CharacteristicServiceContract;
+use App\Repositories\Contracts\CharacteristicCategoryRepositoryContract;
+use App\Repositories\EloquentCharacteristicCategoryRepository;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -11,7 +15,8 @@ class AppServiceProvider extends ServiceProvider
      */
     public function register(): void
     {
-        //
+        $this->app->bind(CharacteristicServiceContract::class, CharacteristicService::class);
+        $this->app->bind(CharacteristicCategoryRepositoryContract::class, EloquentCharacteristicCategoryRepository::class);
     }
 
     /**
