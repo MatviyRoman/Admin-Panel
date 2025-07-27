@@ -78,7 +78,7 @@ Follow these steps to set up and run the application locally.
 
    ```bash
    git clone <repository-url>
-   cd filament-app
+   cd Admin-Panel
    ```
 
    (If you already have the project files, skip cloning and `cd` into your project root.)
@@ -126,16 +126,15 @@ Follow these steps to set up and run the application locally.
 
 ## Usage
 
--   **Front-Facing Page:** Access the main application at `http://127.0.0.1:8000/`.
--   **Characteristics Page:** View the list of characteristics at `http://127.0.0.1:8000/characteristics`.
--   **Filament Admin Panel:** Access the admin panel at `http://127.0.0.1:8000/admin`.
-    -   **Admin Credentials:**
-        -   Email: `roman@matviy.pp.ua`
-        -   Password: `password`
+- **Front-Facing Page:** Access the main application at `http://127.0.0.1:8000/`.
+- **Characteristics Page:** View the list of characteristics at `http://127.0.0.1:8000/characteristics`.
+- **Filament Admin Panel:** Access the admin panel at `http://127.0.0.1:8000/admin`.
+  - **Admin Credentials:**
+    - Email: `roman@matviy.pp.ua`
+    - Password: `password`
 
 ## About the Developer
 
 This project was developed by Roman Matviy.
 
--   **My CV:** [roman.matviy.pp.ua](https://roman.matviy.pp.ua)
-
+- **My CV:** [roman.matviy.pp.ua](https://roman.matviy.pp.ua)
